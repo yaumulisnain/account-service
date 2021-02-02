@@ -32,8 +32,8 @@ git clone https://github.com/yaumulisnain/account-service
 ```
 2. Setup your database.
     * You can copy and run DDL script from ```src/migration/00_ddl.sql``` for create database, or create your database manually.
-    * You also need to copy and run SQL script from ```src/migration/01_all_tables.sql``` for create Flight table.
-    * You can copy and run SQL script from ```src/migration/02_dummy.sql``` for create dummy flight data, or insert manually.
+    * You also need to copy and run SQL script from ```src/migration/01_all_tables.sql``` for create all tables.
+    * You can copy and run SQL script from ```src/migration/02_dummy.sql``` for create dummy user data, or insert manually.
 
 3. You must create ```.env``` file, you can copy from ```.env.dev``` and then customize the value.
 ```

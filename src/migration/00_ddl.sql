@@ -1,0 +1,2 @@
+DROP DATABASE IF EXISTS db_account;
+CREATE DATABASE db_account;
