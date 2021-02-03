@@ -18,3 +18,8 @@ type User struct {
 func (User) TableName() string {
 	return "user"
 }
+
+type UserLogin struct {
+	UserName string `json:"user_name" validate:"min=3,max=50,required"`
+	Password string `json:"password" validate:"min=5,required"`
+}

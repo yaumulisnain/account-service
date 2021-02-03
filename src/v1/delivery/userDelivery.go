@@ -46,3 +46,40 @@ func SignUp(c *gin.Context) {
 		"message": http.StatusText(http.StatusOK),
 	})
 }
+
+func SignIn(c *gin.Context) {
+	var (
+		userLogin model.UserLogin
+		token     model.TokenResponse
+		err       error
+	)
+
+	v := validator.New()
+	err = c.ShouldBindJSON(&userLogin)
+
+	if err != nil {
+		errResp := &h.ErrorResp{Error: err.Error(), Code: http.StatusBadRequest, Message: "Failed when parsing request"}
+		c.AbortWithStatusJSON(errResp.Code, errResp)
+		return
+	}
+
+	if err = v.Struct(userLogin); err != nil {
+		errResp := &h.ErrorResp{Error: err.Error(), Code: http.StatusBadRequest, Message: "Validation error"}
+		c.AbortWithStatusJSON(errResp.Code, errResp)
+		return
+	}
+
+	token, err = usecase.Login(userLogin)
+
+	if err != nil {
+		errResp := &h.ErrorResp{Error: err.Error(), Code: http.StatusBadRequest, Message: "Failed to login"}
+		c.AbortWithStatusJSON(errResp.Code, errResp)
+		return
+	}
+
+	c.JSON(http.StatusOK, gin.H{
+		"data":    token,
+		"code":    http.StatusOK,
+		"message": http.StatusText(http.StatusOK),
+	})
+}

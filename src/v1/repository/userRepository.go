@@ -13,3 +13,15 @@ func CreateUser(user *model.User) error {
 
 	return nil
 }
+
+func FetchUserByUserName(username string) (model.User, error) {
+	var user model.User
+
+	db := getDB()
+
+	if err := db.Where("user_name = ?", username).Find(&user).Error; err != nil {
+		return user, err
+	}
+
+	return user, nil
+}
