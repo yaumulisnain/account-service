@@ -11,6 +11,7 @@ import (
 
 	"account-service/src/config"
 	"account-service/src/core"
+	v1 "account-service/src/v1"
 )
 
 func main() {
@@ -39,6 +40,8 @@ func main() {
 			"version": config.Version,
 		})
 	})
+
+	v1.Route(router)
 
 	port := os.Getenv("PORT")
 	router.Run(port)
