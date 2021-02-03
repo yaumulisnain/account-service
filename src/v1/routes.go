@@ -12,15 +12,11 @@ func Route(route *gin.Engine) *gin.RouterGroup {
 	{
 		api.POST("/sign-up", delivery.SignUp)
 		api.POST("/sign-in", delivery.SignIn)
-		// api.POST("/refresh-token", delivery.RefreshToken)
-	}
+		api.POST("/refresh-token", delivery.RefreshToken)
 
-	// auth := route.Group("/v1")
-	// auth.Use(middleware.CheckToken())
-	// {
-	// 	auth.GET("/chart", deliver.GetMusicChart)
-	// 	auth.GET("/fav", deliver.GetUserFavMusic)
-	// }
+		api.GET("/chart", delivery.GetMusicChart)
+		api.GET("/fav", delivery.GetUserFavMusic)
+	}
 
 	return api
 }

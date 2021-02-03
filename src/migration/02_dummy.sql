@@ -1,3 +1,8 @@
+-- Table User --
+INSERT INTO public."user"
+(id, user_name, full_name, "password", gender, hobby, address, created_at, updated_at, deleted_at)
+VALUES(1, 'yusuf', 'Ade Yusuf', '$2a$08$rPq9Pw1iK42J09jY4TyRhuD0KadEzD04olXS46KcXfQJnQyZ/hzue', NULL, NULL, NULL, '2021-02-03 03:49:33.436', '2021-02-03 03:49:33.436', NULL);
+
 -- Table Music --
 INSERT INTO public.music(title, artist, position, created_at, updated_at)
 VALUES
@@ -51,3 +56,10 @@ VALUES
 ('(Hot S**t) Country Grammar', 'Nelly', 48, '2021-02-03T06:00:00Z', '2021-02-03T06:00:00Z'),
 ('Wifey', 'Next', 49, '2021-02-03T06:00:00Z', '2021-02-03T06:00:00Z'),
 ('Auld Lang Syne (The Millenium Mix)', 'Kenny G', 50, '2021-02-03T06:00:00Z', '2021-02-03T06:00:00Z');
+
+-- Table User Fav --
+INSERT INTO public.user_fav
+(user_id, music_id, created_at, updated_at, deleted_at)
+VALUES
+(1, 3, '2021-02-03 00:00:00.000', '2021-02-03 00:00:00.000', NULL),
+(1, 20, '2021-02-03 00:00:00.000', '2021-02-03 00:00:00.000', NULL);

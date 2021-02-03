@@ -83,3 +83,7 @@ func SignIn(c *gin.Context) {
 		"message": http.StatusText(http.StatusOK),
 	})
 }
+
+func RefreshToken(c *gin.Context) {
+	return
+}

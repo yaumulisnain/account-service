@@ -2,7 +2,6 @@ package helper
 
 import (
 	"strconv"
-	"strings"
 
 	"github.com/jinzhu/gorm"
 )
@@ -27,11 +26,6 @@ func GetPagination(db *gorm.DB, paginationModel map[string][]string) (*gorm.DB, 
 
 	for i, v := range paginationModel {
 		switch i {
-		case "order":
-			if len(v) == 1 {
-				v = append([]string{"created_at"}, v...)
-			}
-			db = db.Order(strings.Join(v, " "))
 		case "limit":
 			limit, errLimit = strconv.Atoi(v[0])
 
