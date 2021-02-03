@@ -87,7 +87,7 @@ func RedisDelete(key string) error {
 	conn := redisPool.Get()
 	defer conn.Close()
 
-	err := conn.Do("DEL", key)
+	_, err := conn.Do("DEL", key)
 
 	if err != nil {
 		return err
