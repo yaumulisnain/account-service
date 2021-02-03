@@ -45,3 +45,53 @@ func InitRedis() {
 func GetRedis() *redis.Pool {
 	return redisPool
 }
+
+func RedisSet(key string, val string) error {
+	conn := redisPool.Get()
+	defer conn.Close()
+
+	_, err := conn.Do("SET", key, val)
+	if err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func RedisGet(key string) (string, error) {
+	conn := redisPool.Get()
+	defer conn.Close()
+
+	s, err := redis.String(conn.Do("GET", key))
+	if err != nil {
+		return "", err
+	}
+
+	return s, nil
+}
+
+func RedisSetExpire(key string, ttl int) error {
+	conn := redisPool.Get()
+	defer conn.Close()
+
+	_, err := conn.Do("EXPIRE", key, ttl)
+
+	if err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func RedisDelete(key string) error {
+	conn := redisPool.Get()
+	defer conn.Close()
+
+	err := conn.Do("DEL", key)
+
+	if err != nil {
+		return err
+	}
+
+	return nil
+}
