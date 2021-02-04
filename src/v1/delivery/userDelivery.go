@@ -85,5 +85,62 @@ func SignIn(c *gin.Context) {
 }
 
 func RefreshToken(c *gin.Context) {
-	return
+	var (
+		tokenResponse model.TokenResponse
+		token         string
+		err           error
+	)
+
+	token = c.Request.Header.Get("Authorization")
+	token, err = usecase.CleanUpToken(token)
+
+	if err != nil {
+		errResp := &h.ErrorResp{Error: err.Error(), Code: http.StatusBadRequest, Message: "Token is not valid"}
+		c.AbortWithStatusJSON(errResp.Code, errResp)
+		return
+	}
+
+	tokenResponse, err = usecase.RefreshToken(token)
+
+	if err != nil {
+		errResp := &h.ErrorResp{Error: err.Error(), Code: http.StatusBadRequest, Message: "Failed create token"}
+		c.AbortWithStatusJSON(errResp.Code, errResp)
+		return
+	}
+
+	c.JSON(http.StatusOK, gin.H{
+		"data":    tokenResponse,
+		"code":    http.StatusOK,
+		"message": http.StatusText(http.StatusOK),
+	})
+}
+
+func SignOut(c *gin.Context) {
+	var (
+		token string
+		err   error
+	)
+
+	token = c.Request.Header.Get("Authorization")
+	token, err = usecase.CleanUpToken(token)
+
+	if err != nil {
+		errResp := &h.ErrorResp{Error: err.Error(), Code: http.StatusBadRequest, Message: "Token is not valid"}
+		c.AbortWithStatusJSON(errResp.Code, errResp)
+		return
+	}
+
+	err = usecase.Logout(token)
+
+	if err != nil {
+		errResp := &h.ErrorResp{Error: err.Error(), Code: http.StatusBadRequest, Message: "Failed to log out"}
+		c.AbortWithStatusJSON(errResp.Code, errResp)
+		return
+	}
+
+	c.JSON(http.StatusOK, gin.H{
+		"data":    true,
+		"code":    http.StatusOK,
+		"message": http.StatusText(http.StatusOK),
+	})
 }

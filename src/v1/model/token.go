@@ -1,15 +1,11 @@
 package model
 
-// import "github.com/dgrijalva/jwt-go"
+import jwt "github.com/dgrijalva/jwt-go"
 
-// type ClaimsPayload struct {
-// 	Key string `json:"key"`
-// }
-
-// type Claims struct {
-// 	jwt.StandardClaims
-// 	Data ClaimsPayload
-// }
+type Claims struct {
+	jwt.StandardClaims
+	Data User
+}
 
 type TokenResponse struct {
 	User         User   `json:"user"`
