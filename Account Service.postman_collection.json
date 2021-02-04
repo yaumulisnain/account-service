@@ -31,6 +31,155 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "Sign In",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"user_name\": \"yusuf\",\n    \"password\": \"test123\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{Base_URL}}/v1/sign-in",
+					"host": [
+						"{{Base_URL}}"
+					],
+					"path": [
+						"v1",
+						"sign-in"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Sign Out",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2MTI0MDYyNDgsImlhdCI6MTYxMjQwMjY0OCwiaXNzIjoiYWNjb3VudC1zZXJ2aWNlIiwiRGF0YSI6eyJpZCI6MSwidXNlcl9uYW1lIjoieXVzdWYiLCJmdWxsX25hbWUiOiJBZGUgWXVzdWYiLCJwYXNzd29yZCI6IiQyYSQwOCRyUHE5UHcxaUs0MkowOWpZNFR5Umh1RDBLYWRFekQwNG9sWFM0NktjWGZRSm5ReVovaHp1ZSIsImNyZWF0ZWRfYXQiOiIyMDIxLTAyLTAzVDAzOjQ5OjMzLjQzNjc2M1oiLCJ1cGRhdGVkX2F0IjoiMjAyMS0wMi0wM1QwMzo0OTozMy40MzY3NjNaIn19.IOFgv3edvQaUXT988lELj3cCMA9nCCK3ElB6WitqqXk",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{Base_URL}}/v1/sign-out",
+					"host": [
+						"{{Base_URL}}"
+					],
+					"path": [
+						"v1",
+						"sign-out"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Refresh Token",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2MTMwMDc5MDgsImlhdCI6MTYxMjQwMzEwOCwiaXNzIjoiYWNjb3VudC1zZXJ2aWNlIiwiRGF0YSI6eyJpZCI6MSwidXNlcl9uYW1lIjoieXVzdWYiLCJmdWxsX25hbWUiOiJBZGUgWXVzdWYiLCJwYXNzd29yZCI6IiQyYSQwOCRyUHE5UHcxaUs0MkowOWpZNFR5Umh1RDBLYWRFekQwNG9sWFM0NktjWGZRSm5ReVovaHp1ZSIsImNyZWF0ZWRfYXQiOiIyMDIxLTAyLTAzVDAzOjQ5OjMzLjQzNjc2M1oiLCJ1cGRhdGVkX2F0IjoiMjAyMS0wMi0wM1QwMzo0OTozMy40MzY3NjNaIn19.tG-2J1Qewv2kIzUlSZTTowaC00p9Z5hjvYxrlldYM6E",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{Base_URL}}/v1/refresh-token",
+					"host": [
+						"{{Base_URL}}"
+					],
+					"path": [
+						"v1",
+						"refresh-token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Music Chart",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2MTI0MDYyNDgsImlhdCI6MTYxMjQwMjY0OCwiaXNzIjoiYWNjb3VudC1zZXJ2aWNlIiwiRGF0YSI6eyJpZCI6MSwidXNlcl9uYW1lIjoieXVzdWYiLCJmdWxsX25hbWUiOiJBZGUgWXVzdWYiLCJwYXNzd29yZCI6IiQyYSQwOCRyUHE5UHcxaUs0MkowOWpZNFR5Umh1RDBLYWRFekQwNG9sWFM0NktjWGZRSm5ReVovaHp1ZSIsImNyZWF0ZWRfYXQiOiIyMDIxLTAyLTAzVDAzOjQ5OjMzLjQzNjc2M1oiLCJ1cGRhdGVkX2F0IjoiMjAyMS0wMi0wM1QwMzo0OTozMy40MzY3NjNaIn19.IOFgv3edvQaUXT988lELj3cCMA9nCCK3ElB6WitqqXk",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Base_URL}}/v1/chart?page=1&limit=10",
+					"host": [
+						"{{Base_URL}}"
+					],
+					"path": [
+						"v1",
+						"chart"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "1"
+						},
+						{
+							"key": "limit",
+							"value": "10"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "User Favorite Music List",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2MTI0MDY3NjEsImlhdCI6MTYxMjQwMzE2MSwiaXNzIjoiYWNjb3VudC1zZXJ2aWNlIiwiRGF0YSI6eyJpZCI6MSwidXNlcl9uYW1lIjoieXVzdWYiLCJmdWxsX25hbWUiOiJBZGUgWXVzdWYiLCJwYXNzd29yZCI6IiQyYSQwOCRyUHE5UHcxaUs0MkowOWpZNFR5Umh1RDBLYWRFekQwNG9sWFM0NktjWGZRSm5ReVovaHp1ZSIsImNyZWF0ZWRfYXQiOiIyMDIxLTAyLTAzVDAzOjQ5OjMzLjQzNjc2M1oiLCJ1cGRhdGVkX2F0IjoiMjAyMS0wMi0wM1QwMzo0OTozMy40MzY3NjNaIn19.K39fcsabCHZT9g4MJpEeM98MA34i-vO1BQ0FAPHxYfI",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Base_URL}}/v1/fav",
+					"host": [
+						"{{Base_URL}}"
+					],
+					"path": [
+						"v1",
+						"fav"
+					]
+				}
+			},
+			"response": []
 		}
 	],
 	"event": [
