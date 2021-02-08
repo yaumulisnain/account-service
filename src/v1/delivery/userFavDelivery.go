@@ -17,14 +17,14 @@ func GetUserFavMusic(c *gin.Context) {
 		err   error
 	)
 
-	// token = c.Request.Header.Get("Authorization")
-	// token, err = usecase.CleanUpToken(token)
+	token = c.Request.Header.Get("Authorization")
+	token, err = usecase.CleanUpToken(token)
 
-	// if err != nil {
-	// 	errResp := &h.ErrorResp{Error: err.Error(), Code: http.StatusBadRequest, Message: "Token is not valid"}
-	// 	c.AbortWithStatusJSON(errResp.Code, errResp)
-	// 	return
-	// }
+	if err != nil {
+		errResp := &h.ErrorResp{Error: err.Error(), Code: http.StatusBadRequest, Message: "Token is not valid"}
+		c.AbortWithStatusJSON(errResp.Code, errResp)
+		return
+	}
 
 	music, err = usecase.ListUserFavorite(token)
 
